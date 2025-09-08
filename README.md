@@ -9,8 +9,9 @@ Example Drop Down:
 Example Displaying GPO:
 ![screenshot](ExampleImages/displayGPO.png)
 
-Things to Edit to Make This Work For You
+Things to Edit/Do to Make This Work For You
 1. Edit the variables under "Variables to Edit" in the script.
 2. Copy the IIS folder to your IIS directory for the website that you create.
 3. Create a scheduled task to run the Update-GPOExplorer.ps1 powershell script. (Account must have Read access on GPOs)
-4. Not required but recommended to lockdown the IIS webpage to only a certain group of users. 
+4. Not required but recommended to lockdown the IIS webpage to only a certain group of users.
+5. Optional - create a DNS entry for your website
