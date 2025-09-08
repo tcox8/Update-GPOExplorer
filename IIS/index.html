@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Group Policy Report Explorer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Group Policy Report Explorer</h1>
+
+    <div class="topControls">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search across all report contents..." />
+        <button class="clear-button" id="clearSearch" title="Clear search">&times;</button>
+      </div>
+
+      <select id="gpoSelect">
+        <option value="">Select a GPO...</option>
+      </select>
+    </div>
+
+    <ul id="results"></ul>
+
+    <div id="navControls">
+      <button id="prevBtn" disabled>Previous Match</button>
+      <span id="matchCounter"></span>
+      <button id="nextBtn" disabled>Next Match</button>
+    </div>
+
+    <iframe id="reportFrame" src=""></iframe>
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
