@@ -2,9 +2,9 @@
 # Author  : Tyler Cox
 # https://github.com/tcox8
 #
-# Version : 1.0
+# Version : 1.1
 # Created : 09/03/2025
-# Modified: 
+# Modified: 9/29/2025
 #
 # Purpose : This script will create a webpage that can display group policies and search through all GPOs.
 #
@@ -12,7 +12,9 @@
 #
 # Special Thanks: https://html-agility-pack.net/ for their excellent HTML parsing 
 #             
-# Change Log:  Ver 1.0 - Initial release
+# Change Log:    Ver 1.1 - 9/29/2025 - Added logic to deal with deleting old .html files in $reportDir
+#
+#                Ver 1.0 - 9/03/2025 - Initial release
 #
 #############################################################################
 
@@ -29,8 +31,11 @@ $reportDir = "C:\inetpub\gpo\reports"
 # ---- Script Start (don't edit below this) ---- #
 $output = @()
 
-# Create the directory if it doesn't exist
-if (!(Test-Path -Path $reportDir)) {
+# If the directory exists, delete all files in it
+if (Test-Path -Path $reportDir) {
+    Get-ChildItem -Path $reportDir -File | Remove-Item -Force
+} else {
+    # Create the directory if it doesn't exist
     New-Item -ItemType Directory -Path $reportDir -Force
 }
 
@@ -78,4 +83,5 @@ Get-ChildItem -LiteralPath $reportDir -Filter *.html | ForEach-Object {
 }
 
 # Save search index as JSON
+
 $output | ConvertTo-Json -Depth 5 | Set-Content -Path "$reportDir\..\searchIndex.json" -Encoding UTF8
